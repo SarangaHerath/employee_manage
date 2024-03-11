@@ -1,5 +1,6 @@
 package com.java.employment_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,11 @@ public class Compensation {
 
     private String description;
 
-    private YearMonth date;
+    private String date;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id", nullable = false)
+    @JsonBackReference
+    private Employee employee;
 
 }
